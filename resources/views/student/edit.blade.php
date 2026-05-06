@@ -5,30 +5,29 @@
 
   
 
-  <form method="POST" action="{{ route('Student.store') }}">
+  <form method="POST" action="{{ route('Student.update', $student) }}">
     @csrf
-  </div>
+    @method('PUT')
+
   <div class="mb-3">
     <label for="name" class="form-label">Name</label>
     <input type="text" class="form-control @error('name') is-invalid @enderror" 
-    id="name" name="name" value="{{ old('name') }}">
+    id="name" name="name" value="{{ old('name', $student->name) }}">
     @error('name')
     <div class="invalid-feedback">{{ $message }}</div>
-   @enderror
-   
+    @enderror
+
   </div>
   <div class="mb-3">
     <label for="nim" class="form-label">Nim</label>
     <input type="number" class="form-control @error('nim') is-invalid @enderror"
-     id="nim" name="nim" value="{{ old('nim') }}">
+     id="nim" name="nim" value="{{ old('nim', $student->nim) }}">
      @error('nim')
     <div class="invalid-feedback">{{ $message }}</div>
      @enderror
   </div>
   
-  <a class="btn btn-warning" href="{{ route('Student.index') }}" role="button">Cancel</a>
-
- 
+  <a class="btn btn-warning" href="{{ route('Student.index') }}">Cancel</a>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
