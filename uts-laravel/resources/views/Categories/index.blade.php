@@ -29,7 +29,7 @@
                          <h3 class="my-4">DATA KATEGORI (MODEL 1)</h3>
                              <a href="{{ route('categories.create') }}" class="btn btn-success fw-bold">+ Tambah Kategori Lewat Web</a>
                         </div>
-                        
+
                         <hr>
 
                         <form action="{{ route('categories.index') }}" method="GET" class="mb-4">
@@ -62,7 +62,7 @@
                                             <td>{{ $category->description ?? '-' }}</td>
                                             <td>
                                                 <button class="btn btn-sm btn-info disabled">Show</button>
-                                                <button class="btn btn-sm btn-warning disabled">Edit</button>
+                                                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-sm btn-warning fw-bold text-white shadow-sm">Edit</a>
                                             </td>
                                         </tr>
                                     @empty

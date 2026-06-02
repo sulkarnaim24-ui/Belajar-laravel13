@@ -8,12 +8,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// TAMBAHKAN BARIS INI UNTUK MENGHUBUNGKAN KE CONTROLLER CATEGORY
+// =========================================================================
+// RUTE UNTUK MODEL 1 (CATEGORY)
+// =========================================================================
+
+// Rute Menampilkan Halaman Utama Tabel Kategori
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 
-// Rute untuk menampilkan form dan memproses tambah data kategori
+// Rute Menampilkan Form Tambah & Memproses Simpan Kategori (Commit 3)
 Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
 
-// TAMBAHKAN BARIS INI UNTUK RUTE PRODUK
+// 👇 DISINI KITA MENAMBAHKAN RUTE EDIT DAN UPDATE KATEGORI (Commit 4) 👇
+Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
+
+
+// =========================================================================
+// RUTE UNTUK MODEL 2 (PRODUCT)
+// =========================================================================
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
