@@ -1,35 +1,34 @@
 <x-app>
 
 
-  <x-slot:title>{{ $title }}</x-slot>
+    <x-slot:title>{{ $title }}</x-slot>
 
-  
 
-  <form method="POST" action="{{ route('Student.store') }}">
-    @csrf
 
-    <div class="mb-4">
+    <form method="POST" action="{{ route('Department.update', $department) }}">
+        @csrf
+        @method('PUT')
+
+    <div class="mb-3">
         <label for="name" class="form-label">Name</label>
         <input type="text" class="form-control @error('name') is-invalid @enderror" 
-        id="name" name="name" 
-        value="{{ old('name') }}">
-        
+        id="name" name="name" value="{{ old('name', $department->name) }}">
         @error('name')
         <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
 
-    <div class="mb-4">
+    <div class="mb-3">
         <label for="nim" class="form-label">Nim</label>
         <input type="number" class="form-control @error('nim') is-invalid @enderror"
-        id="nim" name="nim" value="{{ old('nim') }}">
+        id="nim" name="nim" value="{{ old('nim', $department->nim) }}">
         @error('nim')
         <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
-  
-    <a href="{{ route('Student.index') }}" class="btn btn-warning me-1">Cancel</a>
+
+    <a class="btn btn-warning" href="{{ route('Department.index') }}">Cancel</a>
     <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+</form>
 
 </x-app>
