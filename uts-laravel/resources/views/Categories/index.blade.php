@@ -8,12 +8,28 @@
 </head>
 <body class="bg-light text-dark">
 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">  
+    <div class="container">
+        <a class="navbar-brand" href="#">UTS LARAVEL</a>
+        <div class="navbar-nav">
+            <a class="nav-link active" href="{{ route('categories.index') }}">Data Kategori</a>
+            <a class="nav-link" href="{{ route('products.index') }}">Data Produk</a>
+        </div>
+    </div>
+</nav>
+
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
                         <h3 class="text-center my-4">DATA KATEGORI (MODEL 1)</h3>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                         <h3 class="my-4">DATA KATEGORI (MODEL 1)</h3>
+                             <a href="{{ route('categories.create') }}" class="btn btn-success fw-bold">+ Tambah Kategori Lewat Web</a>
+                        </div>
+                        
                         <hr>
 
                         <form action="{{ route('categories.index') }}" method="GET" class="mb-4">
