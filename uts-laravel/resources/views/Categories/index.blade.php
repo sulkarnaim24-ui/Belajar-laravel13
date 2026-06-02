@@ -61,8 +61,15 @@
                                             <td><span class="badge bg-secondary">{{ $category->slug }}</span></td>
                                             <td>{{ $category->description ?? '-' }}</td>
                                             <td>
-                                                <button class="btn btn-sm btn-info disabled">Show</button>
+                                                <a href="{{ route('categories.show', $category->id) }}" class="btn btn-sm btn-info fw-bold text-white shadow-sm">Show</a>
+
                                                 <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-sm btn-warning fw-bold text-white shadow-sm">Edit</a>
+
+                                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')">
+                                     @csrf
+                                     @method('DELETE')
+                                     <button type="submit" class="btn btn-sm btn-danger fw-bold shadow-sm">Hapus</button>
+                                </form>
                                             </td>
                                         </tr>
                                     @empty

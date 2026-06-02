@@ -51,7 +51,7 @@ class CategoryController extends Controller
         return redirect()->route('categories.index')->with('success', 'Kategori baru berhasil ditambahkan!');
     }
 
-    // 4. Fitur HALAMAN FORM UBAH (Edit) -> Pastikan ini tertulis dengan benar
+    // 4. Fitur HALAMAN FORM UBAH (Edit)
     public function edit($id)
     {
         $category = Category::findOrFail($id);
@@ -74,5 +74,22 @@ class CategoryController extends Controller
         ]);
 
         return redirect()->route('categories.index')->with('success', 'Kategori berhasil diperbarui!');
+    }
+
+    // 6. Fitur PROSES HAPUS DATA (Destroy/Delete) - Commit 5
+    public function destroy($id)
+    {
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        return redirect()->route('categories.index')->with('success', 'Kategori berhasil dihapus!');
+    }
+
+    // 7. Fitur HALAMAN DETAIL DATA (Show) - Commit 6
+    // Sesuai panduan UTS: Menampilkan detail kategori beserta daftar produk (Anak) di dalamnya
+    public function show($id)
+    {
+        $category = Category::with('products')->findOrFail($id);
+        return view('categories.show', compact('category'));
     }
 }

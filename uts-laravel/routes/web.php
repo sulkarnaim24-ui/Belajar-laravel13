@@ -11,17 +11,15 @@ Route::get('/', function () {
 // =========================================================================
 // RUTE UNTUK MODEL 1 (CATEGORY)
 // =========================================================================
-
-// Rute Menampilkan Halaman Utama Tabel Kategori
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-
-// Rute Menampilkan Form Tambah & Memproses Simpan Kategori (Commit 3)
 Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
-
-// 👇 DISINI KITA MENAMBAHKAN RUTE EDIT DAN UPDATE KATEGORI (Commit 4) 👇
 Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
 Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
+
+// RUTE BARU: Delete dan Show Category
+Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+Route::get('/categories/{id}', [CategoryController::class, 'show'])->name('categories.show');
 
 
 // =========================================================================
